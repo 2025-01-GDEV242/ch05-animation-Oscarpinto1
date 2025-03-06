@@ -1,4 +1,9 @@
 import java.awt.Color;
+import java.awt.geom.*;
+import java.awt.*;
+import java.util.Random;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -18,6 +23,7 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
+        myCanvas.setVisible(true);
     }
 
     /**
@@ -51,4 +57,67 @@ public class BallDemo
             }
         }
     }
-}
+    
+    public void boxBounce(int numOfBalls)
+    {
+         myCanvas.setVisible(true);
+         // draws the rectangle boc when boxBounce is excecuted
+         Rectangle box= new Rectangle(50, 50, 300, 300);
+         myCanvas.draw(box);
+         
+         // create and show the balls
+         Random random = new Random();
+         HashSet<BoxBall>balls= new HashSet<>();
+         for (int i=0; i<numOfBalls; i++)
+         {
+             Dimension size = myCanvas.getSize();
+             int x = (int) box.getX() + (int)box.getWidth() - 16;
+             int y = (int) box.getY() +(int) box.getHeight() - 16;
+             int xSpeed= random.nextInt(30);
+             int ySpeed= random.nextInt(30);
+             Color color = new Color( random. nextInt(256), random. nextInt(256),random.nextInt(256));
+             BoxBall ball= new BoxBall ( x, y, xSpeed, ySpeed, 16, color, box, myCanvas);
+             balls.add(ball);
+             ball.draw();
+         }
+         
+         // mamke the balls bounce 
+         boolean finished= false;
+         while (!finished)
+         {
+             myCanvas.wait(50);
+             Iterator<BoxBall> it = balls.iterator();
+              finished= true;
+              while( it.hasNext())
+              {
+                  BoxBall ball= it. next();
+                  ball.move();
+                  // stop when all the balls stop
+                  if(ball.isMoving())
+                  {
+                      finished= false;
+                  }
+              }
+         }
+         Iterator<BoxBall> it = balls.iterator();
+         while(it.hasNext())
+         {
+             BoxBall ball= it.next();
+             ball.erase();
+         }
+        }
+            
+         
+         public void drawFrame()
+         {
+             int borderSize= 20;
+             Dimension size= myCanvas.getSize();
+             Rectangle r = new Rectangle(borderSize, borderSize, (int) size.getWidth() - 2*borderSize, (int) size.getHeight() - 2*borderSize);
+             myCanvas.draw(r);
+             
+         }
+         
+         }
+        
+        
+
