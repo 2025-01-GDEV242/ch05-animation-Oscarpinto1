@@ -9,8 +9,8 @@ import java.util.Iterator;
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author Michael Kölling and David J. Barnes / edited by Oscar Pinto
+ * @version 2016.02.29/ edit on 3/07/2024
  */
 
 public class BallDemo   
@@ -61,7 +61,7 @@ public class BallDemo
     public void boxBounce(int numOfBalls)
     {
          myCanvas.setVisible(true);
-         // draws the rectangle boc when boxBounce is excecuted
+         // draws the rectangle box when boxBounce is excecuted
          Rectangle box= new Rectangle(50, 50, 300, 300);
          myCanvas.draw(box);
          
@@ -81,7 +81,7 @@ public class BallDemo
              ball.draw();
          }
          
-         // mamke the balls bounce 
+         // make the balls bounce 
          boolean finished= false;
          while (!finished)
          {

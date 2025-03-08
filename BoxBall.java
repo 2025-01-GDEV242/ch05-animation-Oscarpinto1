@@ -8,7 +8,7 @@ import java.awt.geom.*;
  */
 public class BoxBall
 {
-    // instance variables - replace the example below with your own
+    // instance variables 
     private int ballDegradation=1;
     private Ellipse2D.Double circle;
     private Color color;
@@ -22,6 +22,16 @@ public class BoxBall
 
     /**
      * Constructor for objects of class BoxBall
+     *
+     * @param xPos  the horizontal coordinate of the ball
+     * @param yPos  the vertical coordinate of the ball
+     * @param xSpeed  the horizontal speed of the ball
+     * @param ySpeed  the vertical speed of the ball
+     * 
+     * @param ballDiameter  the diameter (in pixels) of the ball
+     * @param ballColor  the color of the ball
+     * @param bounds the rectangle the ball should bounce withing
+     * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos,int yPos, int xSpeed, int ySpeed, int ballDiameter, Color ballColor,
     Rectangle boundingRectangle, Canvas drawingCanvas)
@@ -37,6 +47,9 @@ public class BoxBall
         canvas= drawingCanvas;
         
     }
+    /**
+     *Draw this ball at the current postiiton it is in on the canvas
+     **/
     
     public void draw()
     {
@@ -44,13 +57,17 @@ public class BoxBall
         canvas.fillCircle(xPosition, yPosition, diameter);
         
     }
-    
+     /**
+     *Erase this ball at the current postiiton it is in on the canvas
+     **/
     public void erase()
     {
         canvas.eraseCircle(xPosition, yPosition, diameter);
     }
     
-
+    /**
+     *Move this ball based off of its speed and draw it again
+     **/
     public void move()
     {
         //remove 
@@ -102,7 +119,7 @@ public class BoxBall
         }
         
         
-        //drae at the new position
+        //draw at the new position
         draw();
     }
          /**
