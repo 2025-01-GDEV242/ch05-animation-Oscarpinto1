@@ -1,7 +1,11 @@
 import java.awt.*;
 import java.awt.geom.*;
 /**
- * Write a description of class BoxBall here.
+ * BoxBall allows the user to create a method where a rectangle within a canvas is 
+ * drawn, alongside the rectangle the user will be prompted to input how many balls
+ * he wants to boucne within the rectangle, the balls do not leave the rectangle, 
+ * nor do they all bounce at the same speed and direction. 
+
  *
  * @author (Oscar Pinto)
  * @version (3/6/25)
